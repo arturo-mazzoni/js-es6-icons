@@ -105,10 +105,42 @@ $(document).ready(function(){
     "purple"
   ];
   // creo un array vuoto che si andrà a popolare con i tre tipi, i quali avranno l'indice corrispettivo del colore dell'array di colori
+  const iconTypes = getTypes(icons);
+  console.log(iconTypes);
 
+  const iconsColor = icons.map((element) => {
+    const indexType = iconTypes.indexOf(element.type);
+    console.log(indexType);
+    console.log(colors[indexType]);
+
+    return {
+      ...element,
+      color: colors[indexType]
+    }
+
+  });
+  console.log(iconsColor);
+
+  const container = $(".icons");
+
+  printIcons(iconsColor,container);
 });
 
 // FUNCTIONS*********
+
+function printIcons(array,container){
+  array.forEach((element) => {
+
+    const {name, family, prefix, type, color} = element;
+    container.append(`
+      <div class="icon">
+        <i class="${family} ${prefix}${name}" style="color:${color}"></i>
+        <div class="title">${name.toUpperCase()}</div>
+      </div>
+    `)
+  });
+
+}
 
 function getTypes(array){
   const types = [];
