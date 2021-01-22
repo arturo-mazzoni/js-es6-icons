@@ -128,7 +128,7 @@ $(document).ready(function(){
 
 // FUNCTIONS*********
 
-function printIcons(array,container){
+function printIcons(array, container){
   array.forEach((element) => {
 
     const {name, family, prefix, type, color} = element;
